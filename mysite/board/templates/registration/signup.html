@@ -1,0 +1,11 @@
+{% if form.errors %}
+<p> error </p>
+{% endif %}
+
+{% load crispy_forms_tags %}
+<form method="post" action="{% url 'board:signup' %}">
+  {% csrf_token %}
+  {{ form|crispy }}
+
+  <input type="submit" value="Sign up">
+</form>

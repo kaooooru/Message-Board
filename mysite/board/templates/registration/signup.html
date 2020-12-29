@@ -1,3 +1,6 @@
+{% extends 'board/base.html' %}
+
+{% block content %}
 {% if form.errors %}
 <p> error </p>
 {% endif %}
@@ -7,5 +10,8 @@
   {% csrf_token %}
   {{ form|crispy }}
 
-  <input type="submit" value="Sign up">
+  <input type="submit" value="Sign up" class="btn btn-primary">
 </form>
+
+
+{% endblock %}

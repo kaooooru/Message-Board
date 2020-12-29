@@ -1,13 +1,23 @@
+{% extends 'board/base.html' %}
+
+{% block content %}
+
+<h1> Welcome to Full Stack Twitter </h1>
+
+<p> Please login or <a href="{% url 'board:signup' %}"> signup </a> </p>
+
 {% if form.errors %}
 <p> error </p>
 {% endif %}
 
 {% load crispy_forms_tags %}
 <form method="post" action="{% url 'login' %}">
-    {% csrf_token %}
-    {{ form|crispy }}
-    
-    <input type="submit" value="login">
-    <input type="hidden" name="next" value="{{ next }}">
+  {% csrf_token %}
+  {{ form|crispy }}
+
+  <input type="submit" value="login">
+  <input type="hidden" name="next" value="{{ next }}">
 </form>
+
+{% endblock %}
     

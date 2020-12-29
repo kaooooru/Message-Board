@@ -1,14 +1,25 @@
-{% extends 'board/base.html' %}
-
+{% extends "board/base.html" %}
 {% block content %}
+{% load crispy_forms_tags %}
+<h1>{{ user.username }}</h1>
+<p>{{ user.following.count }} Following   {{ user.followers.count }} Followers</p>
 
-{% if user.is_authenticated %}
-  <h1>Hi {{ user.username }}</h1>
+{% if current_user.id is not None and current_user.id != user.id %}
+  <form method="post">
+    {% csrf_token %}
+    {% if is_following %}
+      <input type="submit" value="Unfollow" class="btn btn-primary" />
+    {% else %}
+      <input type="submit" value="Follow" class="btn btn-primary" />
+    {% endif %}
+  </form>
+{% endif %}
+
   <div class="mb-3"></div>
   {% for post in posts %}
     <div class="card">
       <div class="card-header">
-        <a href="{% url 'board:user' post.user.id %}"> {{ post.user.username }}</a>
+        <a href="{% url 'board:post' post.user.id %}"> {{ post.user.username }}</a>
       </div>
       <div class="card-body">
         <p class="card-text">{{ post.content }}</p>
@@ -22,8 +33,5 @@
     </div>
     <div class="mb-3"></div>
   {% endfor %}
-{% else %}
-  Please <a href="{% url 'login' %}">log in</a>
-{% endif %}
 
 {% endblock %}

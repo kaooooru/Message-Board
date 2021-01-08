@@ -1,6 +1,6 @@
 # Message-Board
 Please check out my message board project, here are some project descriptions:
-* Link to message board: ka00ru.com
+* Link to the message board: ka00ru.com
 * A message board that allows individuals to create posts and view their newsfeed, used by new graduate to share information during the pandemic (ka00ru.com)
 * Built responsive frontend UI using HTML5/CSS Flexbox and Bootstrap
 * Used Python and Django to build web server and REST APIs
